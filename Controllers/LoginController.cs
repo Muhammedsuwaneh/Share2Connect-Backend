@@ -10,6 +10,8 @@ using System.Text;
 using Share2Connect.Backend.Encryption;
 using Share2Connect.Backend.Context;
 using Share2Connect.Backend.Models;
+using NuGet.Common;
+using Newtonsoft.Json.Linq;
 
 namespace Share2Connect.Backend.Controllers
 {
@@ -42,15 +44,16 @@ namespace Share2Connect.Backend.Controllers
                 // create a response 
                 var response = new
                 {
+                    status = 200,
                     token = _token,
                     message = "authenticated successfully",
-                    status = "200"
+                    user = user
                 };
 
                 return Ok(response);
             }
 
-            return NotFound("User not found. Please check entered credentials");
+            return NotFound("User not found. Please verify entered credentials");
         }
 
         /// <summary>

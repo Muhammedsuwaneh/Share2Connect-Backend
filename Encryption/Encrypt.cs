@@ -38,13 +38,14 @@ namespace Share2Connect.Backend.Encryption
             var securityKey = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
 
-            // generate a credential based on security key
+            // generate a credential based on security key using the HmacSha256 algorithm
             var credentials = new SigningCredentials
                 (securityKey, SecurityAlgorithms.HmacSha256);
 
             // define claims
             var claims = new[]
             {
+                new Claim(ClaimTypes.PrimarySid, user.Id.ToString()),
                 new Claim(ClaimTypes.NameIdentifier, user.FullName),
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.Gender, user.Gender),

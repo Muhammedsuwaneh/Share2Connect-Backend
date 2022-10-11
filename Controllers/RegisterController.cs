@@ -11,10 +11,12 @@ namespace Share2Connect.Backend.Controllers
     public class RegisterController : ControllerBase
     {
         private UserDbContext _context;
+        private IConfiguration _config;
 
-        public RegisterController(UserDbContext context)
+        public RegisterController(UserDbContext context, IConfiguration config)
         {
             _context = context;
+            _config = config;
         }
         
         /// <summary>
@@ -29,14 +31,32 @@ namespace Share2Connect.Backend.Controllers
 
             if(!doesUserExist)
             {
+
+                var newUser = new User
+                {
+                    FullName = user.FullName,
+                    Email = user.Email,
+                    Password = Encrypt.GenerateMD5HashedPassword(user.Password),
+                    Gender = user.Gender
+                };
+
                 // create user 
-                _context.Users.Add(new User { FullName = user.FullName, Email = user.Email, 
-                    Password = Encrypt.GenerateMD5HashedPassword(user.Password), Gender = user.Gender } );
+                _context.Users.Add(newUser);
 
                 // save user
                 _context.SaveChanges();
 
-                return Ok("user created");
+                var _token = Encrypt.GenerateSessionToken(newUser, _config);
+
+                var response = new
+                {
+                      status = 200,
+                      token = _token,
+                      message = "user successfully registered",
+                      user = newUser
+                };
+
+                return Ok(response);
             }
 
             return BadRequest("Something went wrong. User seems to exist");
@@ -51,8 +71,7 @@ namespace Share2Connect.Backend.Controllers
         {
             // check if user exist
             var currentUser = _context.Users.
-               FirstOrDefault(o => o.Email.ToLower() == user.Email.ToLower()
-               && o.Password == Encrypt.GenerateMD5HashedPassword(user.Password));
+               FirstOrDefault(o => o.Email.ToLower() == user.Email.ToLower());
 
             if (currentUser != null) return true;
 
