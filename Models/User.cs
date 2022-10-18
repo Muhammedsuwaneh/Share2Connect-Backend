@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Share2Connect.Backend.Models
+namespace Share2Connect.Api.Models
 {
     public class User
     {

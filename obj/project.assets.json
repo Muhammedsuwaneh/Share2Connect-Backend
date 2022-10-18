@@ -10217,11 +10217,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\LENOVO\\Documents\\.Net\\ASP.NET_CORE\\Projects\\Share2Connect\\Share2Connect.Backend.csproj",
-      "projectName": "Share2Connect.Backend",
-      "projectPath": "C:\\Users\\LENOVO\\Documents\\.Net\\ASP.NET_CORE\\Projects\\Share2Connect\\Share2Connect.Backend.csproj",
+      "projectUniqueName": "C:\\Users\\LENOVO\\Documents\\.Net\\ASP.NET_CORE\\Projects\\Pending\\Share2Connect\\Share2Connect.Api.csproj",
+      "projectName": "Share2Connect.Api",
+      "projectPath": "C:\\Users\\LENOVO\\Documents\\.Net\\ASP.NET_CORE\\Projects\\Pending\\Share2Connect\\Share2Connect.Api.csproj",
       "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\LENOVO\\Documents\\.Net\\ASP.NET_CORE\\Projects\\Share2Connect\\obj\\",
+      "outputPath": "C:\\Users\\LENOVO\\Documents\\.Net\\ASP.NET_CORE\\Projects\\Pending\\Share2Connect\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

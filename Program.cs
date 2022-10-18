@@ -5,8 +5,8 @@ using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Share2Connect.Backend.Context;
-using Share2Connect.Backend.Models;
+using Share2Connect.Api.Context;
+using Share2Connect.Api.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

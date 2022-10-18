@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Share2Connect.Backend", "Share2Connect.Backend.csproj", "{6748F341-0194-4843-960F-DB18E04D3A90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Share2Connect.Api", "Share2Connect.Api.csproj", "{6748F341-0194-4843-960F-DB18E04D3A90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

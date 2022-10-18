@@ -2,9 +2,9 @@
 
 #nullable disable
 
-namespace Share2Connect.Backend.Migrations
+namespace Share2Connect.Api.Migrations
 {
-    public partial class createUserModel : Migration
+    public partial class createUserTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

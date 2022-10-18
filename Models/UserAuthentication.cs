@@ -1,4 +1,4 @@
-﻿namespace Share2Connect.Backend.Models
+﻿namespace Share2Connect.Api.Models
 {
     public class UserAuthentication
     {

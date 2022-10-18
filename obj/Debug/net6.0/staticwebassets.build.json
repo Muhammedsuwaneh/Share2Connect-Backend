@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "eh7pLwp/zDJ1dAxs8wN/pci/ckBmaVRemBURK3u/N0k=",
-  "Source": "Share2Connect.Backend",
-  "BasePath": "_content/Share2Connect.Backend",
+  "Hash": "Ug6sjMi4rpERYqD6TZGrT+XE8FiGu4i9lWkFgKFQaHY=",
+  "Source": "Share2Connect.Api",
+  "BasePath": "_content/Share2Connect.Api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

@@ -1,7 +1,7 @@
-﻿using Share2Connect.Backend.Models;
-using Share2Connect.Backend.Encryption;
+﻿using Share2Connect.Api.Models;
+using Share2Connect.Api.Encryption;
 
-namespace Share2Connect.Backend.Context
+namespace Share2Connect.Api.Context
 {
     public class SeedInitializer
     {

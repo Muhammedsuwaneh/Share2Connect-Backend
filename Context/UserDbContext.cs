@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Share2Connect.Backend.Models;
+using Share2Connect.Api.Models;
 
-namespace Share2Connect.Backend.Context
+namespace Share2Connect.Api.Context
 {
     public partial class UserDbContext : DbContext
     {

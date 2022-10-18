@@ -2,12 +2,12 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using Share2Connect.Backend.Models;
+using Share2Connect.Api.Models;
 using XAct;
-using Share2Connect.Backend.Context;
+using Share2Connect.Api.Context;
 using XAct.Users;
 
-namespace Share2Connect.Backend.Controllers
+namespace Share2Connect.Api.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]
@@ -45,7 +45,11 @@ namespace Share2Connect.Backend.Controllers
                 return Ok(response);
             }
 
-            return NotFound("User not found");
+            return NotFound(new
+            {
+                status = 404,
+                message = "User not found. Please verify entered credentials",
+            });
         }
 
         [HttpGet("get-user/{id}")]
@@ -62,7 +66,11 @@ namespace Share2Connect.Backend.Controllers
 
             if (user != null) return Ok(response);
 
-            return NotFound("User not found");
+            return NotFound(new
+            {
+                status = 404,
+                message = "User not found. Please verify entered credentials",
+            });
         }
 
         [HttpGet]

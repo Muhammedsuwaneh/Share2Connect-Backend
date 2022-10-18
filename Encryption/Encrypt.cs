@@ -2,10 +2,10 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Share2Connect.Backend.Models;
+using Share2Connect.Api.Models;
 using XSystem.Security.Cryptography;
 
-namespace Share2Connect.Backend.Encryption
+namespace Share2Connect.Api.Encryption
 {
     public class Encrypt
     {

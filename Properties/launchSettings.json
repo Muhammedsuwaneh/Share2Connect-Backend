@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "Share2Connect.Backend": {
+    "Share2Connect.Api": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

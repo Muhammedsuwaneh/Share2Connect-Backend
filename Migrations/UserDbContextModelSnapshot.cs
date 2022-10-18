@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Share2Connect.Backend.Context;
+using Share2Connect.Api.Context;
 
 #nullable disable
 
-namespace Share2Connect.Backend.Migrations
+namespace Share2Connect.Api.Migrations
 {
     [DbContext(typeof(UserDbContext))]
     partial class UserDbContextModelSnapshot : ModelSnapshot
@@ -21,7 +21,7 @@ namespace Share2Connect.Backend.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Share2Connect.Backend.Models.User", b =>
+            modelBuilder.Entity("Share2Connect.Api.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

@@ -7,13 +7,13 @@ using System.CodeDom.Compiler;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Share2Connect.Backend.Encryption;
-using Share2Connect.Backend.Context;
-using Share2Connect.Backend.Models;
+using Share2Connect.Api.Encryption;
+using Share2Connect.Api.Context;
+using Share2Connect.Api.Models;
 using NuGet.Common;
 using Newtonsoft.Json.Linq;
 
-namespace Share2Connect.Backend.Controllers
+namespace Share2Connect.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -53,7 +53,11 @@ namespace Share2Connect.Backend.Controllers
                 return Ok(response);
             }
 
-            return NotFound("User not found. Please verify entered credentials");
+            return NotFound(new
+            {
+                status = 404,
+                message = "User not found. Please verify entered credentials",
+            });
         }
 
         /// <summary>

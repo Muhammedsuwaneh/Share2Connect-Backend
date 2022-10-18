@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Share2Connect.Backend.Context;
+using Share2Connect.Api.Context;
 
 #nullable disable
 
-namespace Share2Connect.Backend.Migrations
+namespace Share2Connect.Api.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20221009201131_createUserModel")]
-    partial class createUserModel
+    [Migration("20221017065613_createUserTables")]
+    partial class createUserTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace Share2Connect.Backend.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Share2Connect.Backend.Models.User", b =>
+            modelBuilder.Entity("Share2Connect.Api.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

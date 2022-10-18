@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Share2Connect.Backend.Context;
-using Share2Connect.Backend.Encryption;
-using Share2Connect.Backend.Models;
+using Share2Connect.Api.Context;
+using Share2Connect.Api.Encryption;
+using Share2Connect.Api.Models;
 
-namespace Share2Connect.Backend.Controllers
+namespace Share2Connect.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -59,7 +59,10 @@ namespace Share2Connect.Backend.Controllers
                 return Ok(response);
             }
 
-            return BadRequest("Something went wrong. User seems to exist");
+            return BadRequest(new {
+                status = 400,
+                message = "Request rejected. User already exist",
+            });
         }
 
         /// <summary>
