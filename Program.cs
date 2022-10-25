@@ -10,7 +10,7 @@ using Share2Connect.Api.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Api cors policy middleware string
 string ApiCorsPolicy = "_apiCorsPolicy";
 
 builder.Services.AddControllers();
