@@ -10,13 +10,14 @@ namespace Share2Connect.Api.Context
            using(var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
                 // init user context service 
-                var _userContext = serviceScope.ServiceProvider.GetService<UserDbContext>();
+                var _userContext = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
 
                 if(!_userContext.Users.Any())
                 {
                     // create a default user
                     _userContext.Users.AddRange(new User { FullName = "enes", Email = "enes@enes.com", 
-                        Gender = "Male", Password = Encrypt.GenerateMD5HashedPassword("1234@@@") });
+                        Gender = "Erkek", Password = Encrypt.GenerateMD5HashedPassword("1234"), About = "Mobile Uygulama geliştirici",
+                     Department = "Bilgisayar Mühendisliği" });
 
                     // save default user
                     _userContext.SaveChanges();

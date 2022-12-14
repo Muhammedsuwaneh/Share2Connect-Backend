@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Share2Connect.Api.Context;
 using Share2Connect.Api.Models;
+using System.Diagnostics;
 using System.Security.Claims;
 using XAct;
 using XAct.Users;
@@ -190,7 +191,7 @@ namespace Share2Connect.Api.Controllers
 
                 if (announcement == null) return NotFound(new { status = 404, message = "no announcement found" });
 
-                _context.Announcements.Remove(announcement);
+                _context.Announcements.Remove(announcement); 
 
                 _context.SaveChanges();
 

@@ -12,5 +12,9 @@ namespace Share2Connect.Api.Models
         public string Password { get; set; }
         public string Email { get; set; }
         public string Gender { get; set; }
+
+        public string About { get; set; }
+
+        public string Department { get; set; } 
     }
 }

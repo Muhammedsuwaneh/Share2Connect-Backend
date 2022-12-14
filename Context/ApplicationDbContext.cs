@@ -9,5 +9,7 @@ namespace Share2Connect.Api.Context
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {}
 
         public virtual DbSet<Announcement> Announcements { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+
     }
 }

@@ -14,9 +14,9 @@ namespace Share2Connect.Api.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private UserDbContext _context; 
+        private ApplicationDbContext _context; 
 
-        public UsersController(UserDbContext context)
+        public UsersController(ApplicationDbContext context)
         {
             _context = context;
         }

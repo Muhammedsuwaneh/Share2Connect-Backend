@@ -2,28 +2,68 @@
 
 #nullable disable
 
-namespace Share2Connect.Api.Migrations.ApplicationDb
+namespace Share2Connect.Api.Migrations
 {
-    public partial class AddAnnouncementTables : Migration
+    public partial class FirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "ImageFile",
+                columns: table => new
+                {
+                    ImageID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ImageFile", x => x.ImageID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    About = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Department = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "AnnouncementData",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Date = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Clock = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Desc = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NumberOfTicket = table.Column<int>(type: "int", nullable: false),
+                    Price = table.Column<int>(type: "int", nullable: false),
+                    EmptySeats = table.Column<int>(type: "int", nullable: false),
                     Place_name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Place_gps = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Place_gps = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AnnouncementData", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AnnouncementData_ImageFile_ImageID",
+                        column: x => x.ImageID,
+                        principalTable: "ImageFile",
+                        principalColumn: "ImageID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -65,6 +105,11 @@ namespace Share2Connect.Api.Migrations.ApplicationDb
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_AnnouncementData_ImageID",
+                table: "AnnouncementData",
+                column: "ImageID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Announcements_DataId",
                 table: "Announcements",
                 column: "DataId");
@@ -84,7 +129,13 @@ namespace Share2Connect.Api.Migrations.ApplicationDb
                 name: "Participant");
 
             migrationBuilder.DropTable(
+                name: "Users");
+
+            migrationBuilder.DropTable(
                 name: "AnnouncementData");
+
+            migrationBuilder.DropTable(
+                name: "ImageFile");
         }
     }
 }

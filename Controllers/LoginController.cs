@@ -20,10 +20,10 @@ namespace Share2Connect.Api.Controllers
     public class LoginController : ControllerBase
     {
         private IConfiguration _config;
-        private UserDbContext _context;
+        private ApplicationDbContext _context;
 
         // inject config
-        public LoginController(IConfiguration config, UserDbContext context)
+        public LoginController(IConfiguration config, ApplicationDbContext context)
         {
             _config = config;
             _context = context;

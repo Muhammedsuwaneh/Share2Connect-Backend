@@ -10,10 +10,10 @@ namespace Share2Connect.Api.Controllers
     [ApiController]
     public class RegisterController : ControllerBase
     {
-        private UserDbContext _context;
+        private ApplicationDbContext _context;
         private IConfiguration _config;
 
-        public RegisterController(UserDbContext context, IConfiguration config)
+        public RegisterController(ApplicationDbContext context, IConfiguration config)
         {
             _context = context;
             _config = config;
@@ -37,7 +37,9 @@ namespace Share2Connect.Api.Controllers
                     FullName = user.FullName,
                     Email = user.Email,
                     Password = Encrypt.GenerateMD5HashedPassword(user.Password),
-                    Gender = user.Gender
+                    Gender = user.Gender,
+                    About = user.About,
+                    Department = user.Department
                 };
 
                 // create user 

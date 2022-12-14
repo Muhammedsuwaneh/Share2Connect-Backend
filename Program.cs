@@ -50,9 +50,6 @@ builder.Services.AddAuthentication(options =>
 });
 
 // setup sql server service config for user db context db migration
-builder.Services.AddDbContext<UserDbContext>(opt =>
-opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
 builder.Services.AddDbContext<ApplicationDbContext>(opt =>
 opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -66,6 +63,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseStaticFiles();
 
 app.UseCors(ApiCorsPolicy);
 
