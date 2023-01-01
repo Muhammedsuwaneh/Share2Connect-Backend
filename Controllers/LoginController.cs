@@ -69,8 +69,8 @@ namespace Share2Connect.Api.Controllers
         {
             // check if user exist
             var currentUser = _context.Users.
-           FirstOrDefault(o => o.Email.ToLower() == userLogin.Email.ToLower()
-           && o.Password == Encrypt.GenerateMD5HashedPassword(userLogin.Password));
+           FirstOrDefault(o => o.userMail.ToLower() == userLogin.userMail.ToLower()
+           && o.userPassword == Encrypt.GenerateMD5HashedPassword(userLogin.userPassword));
 
             if (currentUser != null) return currentUser;
 

@@ -12,23 +12,34 @@ namespace Share2Connect.Api.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Required]
-        public string Title { get; set; }
+        public string adNameText { get; set; }
         [Required]
-        public string Description { get; set; }
-        [Required]
-        public string DateTime { get; set; }
+        public string adDescText { get; set; }
         [AllowNull]
-        public int NumberOfTicket { get; set; }
+        public byte[]? adImage { get; set; }
         [AllowNull]
-        public int Price { get; set; }
+        public string? adClubName { get; set; }
         [AllowNull]
-        public int EmptySeats { get; set; }
+        public string? adDateText { get; set; }
         [AllowNull]
-        public string? Place_name { get; set; }
+        public string? adTicketText { get; set; }
         [AllowNull]
-        public string? Place_gps { get; set; }
+        public string? adPriceText { get; set; }
         [AllowNull]
-        public ImageFile Image { get; set; }
+        public string? adSeatText { get; set; }
+        [AllowNull]
+        public string? adPlaceText { get; set; }
+        [AllowNull]
+        public string? adPlaceGPS { get; set; }
+        [AllowNull]
+        public string? adRouteStartText { get; set; }
+        [AllowNull]
+        public string? adRouteEndText { get; set; }
+        [AllowNull]
+        public string? adRouteStartGPS { get; set; }
+        [AllowNull]
+        public string? adRouteEndGPS { get; set; }
+        [AllowNull]
         public List<Participant>? Participants { get; set; } 
     }
 }

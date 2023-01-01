@@ -2,7 +2,7 @@
 {
     public class UserAuthentication
     {
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public string userMail { get; set; }
+        public string userPassword { get; set; }
     }
 }

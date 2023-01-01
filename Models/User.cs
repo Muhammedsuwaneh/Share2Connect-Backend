@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Share2Connect.Api.Models
 {
@@ -7,14 +8,22 @@ namespace Share2Connect.Api.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        public string FullName { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public string Gender { get; set; }
-
-        public string About { get; set; }
-
-        public string Department { get; set; } 
+        public int userId { get; set; }
+        [Required]
+        public string userNameText { get; set; }
+        [Required]
+        public string userPassword { get; set; }
+        [Required]
+        public string userMail { get; set; }
+        [Required]
+        public string userGender { get; set; }
+        [Required]
+        public string userBio { get; set; }
+        [Required]
+        public string userPhoneNumber { get; set; }
+        [AllowNull]
+        public byte[]? userImage { get; set; }
+        [Required]
+        public string userDepartment { get; set; } 
     }
 }

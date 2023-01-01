@@ -15,9 +15,11 @@ namespace Share2Connect.Api.Context
                 if(!_userContext.Users.Any())
                 {
                     // create a default user
-                    _userContext.Users.AddRange(new User { FullName = "enes", Email = "enes@enes.com", 
-                        Gender = "Erkek", Password = Encrypt.GenerateMD5HashedPassword("1234"), About = "Mobile Uygulama geliştirici",
-                     Department = "Bilgisayar Mühendisliği" });
+                    _userContext.Users.AddRange(new User { userNameText = "enes", userMail = "enes@enes.com", 
+                        userGender = "Erkek", userBio  = "Android App Developer", userPhoneNumber = "05340770833",
+                        userImage = null,
+                        userPassword = Encrypt.GenerateMD5HashedPassword("1234"),
+                     userDepartment = "Bilgisayar Mühendisliği" });
 
                     // save default user
                     _userContext.SaveChanges();

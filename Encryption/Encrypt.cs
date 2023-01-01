@@ -45,10 +45,10 @@ namespace Share2Connect.Api.Encryption
             // define claims
             var claims = new[]
             {
-                new Claim(ClaimTypes.PrimarySid, user.Id.ToString()),
-                new Claim(ClaimTypes.NameIdentifier, user.FullName),
-                new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Gender, user.Gender),
+                new Claim(ClaimTypes.PrimarySid, user.userId.ToString()),
+                new Claim(ClaimTypes.NameIdentifier, user.userNameText),
+                new Claim(ClaimTypes.Email, user.userMail),
+                new Claim(ClaimTypes.Gender, user.userGender),
             };
 
             // generate token

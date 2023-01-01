@@ -28,7 +28,7 @@ namespace Share2Connect.Api.Controllers
         public IActionResult New([FromBody] Announcement announcement)
         {
             if (announcement == null) 
-                return BadRequest(new { status = 400, message = "request rejected, null announcement" });
+                return BadRequest(new { status = 500, message = "request rejected, null announcement" });
 
             var identity = HttpContext.User.Identity as ClaimsIdentity;
 
@@ -40,9 +40,9 @@ namespace Share2Connect.Api.Controllers
 
                 var newAnnouncement = new Announcement
                 {
-                    Category = announcement.Category,
-                    User_id = userId,
-                    Data = announcement.Data
+                    category = announcement.category,
+                    user_id = userId,
+                    data = announcement.data
                 };
 
                 _context.Announcements.Add(newAnnouncement);
@@ -66,8 +66,8 @@ namespace Share2Connect.Api.Controllers
 
             if (identity != null)
             {
-                var announcements = _context.Announcements.Include(a => a.Data)
-                    .Include(a => a.Data.Participants).ToList();
+                var announcements = _context.Announcements.Include(a => a.data)
+                    .Include(a => a.data.Participants).ToList();
 
                 string _message = "announcements retrieved";
 
@@ -93,8 +93,8 @@ namespace Share2Connect.Api.Controllers
 
             if (identity != null)
             {
-                var announcements = _context.Announcements.Include(a => a.Data).Include(a => a.Data.Participants)
-                    .Where(a => a.Category == category)
+                var announcements = _context.Announcements.Include(a => a.data).Include(a => a.data.Participants)
+                    .Where(a => a.category == category)
                     .ToList();
 
                 string _message = $"announcements of the category {category} retrieved";
@@ -123,9 +123,9 @@ namespace Share2Connect.Api.Controllers
             if (identity != null)
             {
                 var announcement = _context.Announcements
-                    .Include(a => a.Data)
-                    .Include(a => a.Data.Participants)
-                    .FirstOrDefault(a => a.Post_id == id);
+                    .Include(a => a.data)
+                    .Include(a => a.data.Participants)
+                    .FirstOrDefault(a => a.post_id == id);
 
                 if(announcement == null) return NotFound(new { status = 404, messsage = "announcement not found" });
 
@@ -149,9 +149,9 @@ namespace Share2Connect.Api.Controllers
             if (identity != null)
             {
                 var announcements = _context.Announcements
-                    .Include(a => a.Data)
-                    .Include(a => a.Data.Participants)
-                    .Where(a => a.User_id == user_id).ToList();
+                    .Include(a => a.data)
+                    .Include(a => a.data.Participants)
+                    .Where(a => a.user_id == user_id).ToList();
 
                 string _message = "announcement retrieved";
 
@@ -185,9 +185,9 @@ namespace Share2Connect.Api.Controllers
                 // get announcement to be updated from db - to avoid deleting another user's record we search for an announcement with 
                 // the id of the logged in user
                 var announcement = _context.Announcements
-                    .Include(a => a.Data)
-                    .Include(a => a.Data.Participants)
-                    .FirstOrDefault(a => a.Post_id == id && a.User_id == userId);
+                    .Include(a => a.data)
+                    .Include(a => a.data.Participants)
+                    .FirstOrDefault(a => a.post_id == id && a.user_id == userId);
 
                 if (announcement == null) return NotFound(new { status = 404, message = "no announcement found" });
 
@@ -217,15 +217,15 @@ namespace Share2Connect.Api.Controllers
                 // get announcement to be updated from db - to avoid updating another user's record we search for an announcement with 
                 // the id of the logged in user
                 var announcement = _context.Announcements
-                    .Include(a => a.Data)
-                    .Include(a => a.Data.Participants)
-                    .FirstOrDefault(a => a.Post_id == _announcement.Post_id && a.User_id == userId);
+                    .Include(a => a.data)
+                    .Include(a => a.data.Participants)
+                    .FirstOrDefault(a => a.post_id == _announcement.post_id && a.user_id == userId);
 
                 if (announcement == null) return NotFound(new { status = 404, message = "no announcement found" });
 
                 // update changes
-                announcement.Category = _announcement.Category;
-                announcement.Data = _announcement.Data;
+                announcement.category = _announcement.category;
+                announcement.data = _announcement.data;
 
                 // save updated changes
                 _context.SaveChanges();

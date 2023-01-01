@@ -12,8 +12,8 @@ using Share2Connect.Api.Context;
 namespace Share2Connect.Api.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221209143310_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20221227182507_imagePropertyUpdated")]
+    partial class imagePropertyUpdated
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,25 +26,25 @@ namespace Share2Connect.Api.Migrations
 
             modelBuilder.Entity("Share2Connect.Api.Models.Announcement", b =>
                 {
-                    b.Property<int>("Post_id")
+                    b.Property<int>("post_id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Post_id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("post_id"), 1L, 1);
 
-                    b.Property<string>("Category")
+                    b.Property<string>("category")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DataId")
+                    b.Property<int>("dataId")
                         .HasColumnType("int");
 
-                    b.Property<int>("User_id")
+                    b.Property<int>("user_id")
                         .HasColumnType("int");
 
-                    b.HasKey("Post_id");
+                    b.HasKey("post_id");
 
-                    b.HasIndex("DataId");
+                    b.HasIndex("dataId");
 
                     b.ToTable("Announcements");
                 });
@@ -57,58 +57,53 @@ namespace Share2Connect.Api.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("DateTime")
+                    b.Property<string>("adClubName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("adDateText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("adDescText")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Description")
+                    b.Property<byte[]>("adImage")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("adNameText")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("EmptySeats")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ImageID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NumberOfTicket")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Place_gps")
+                    b.Property<string>("adPlaceGPS")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Place_name")
+                    b.Property<string>("adPlaceText")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
+                    b.Property<string>("adPriceText")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Title")
-                        .IsRequired()
+                    b.Property<string>("adRouteEndGPS")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("adRouteEndText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("adRouteStartGPS")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("adRouteStartText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("adSeatText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("adTicketText")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ImageID");
-
                     b.ToTable("AnnouncementData");
-                });
-
-            modelBuilder.Entity("Share2Connect.Api.Models.ImageFile", b =>
-                {
-                    b.Property<int>("ImageID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ImageID"), 1L, 1);
-
-                    b.Property<string>("ImagePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ImageID");
-
-                    b.ToTable("ImageFile");
                 });
 
             modelBuilder.Entity("Share2Connect.Api.Models.Participant", b =>
@@ -128,61 +123,57 @@ namespace Share2Connect.Api.Migrations
 
             modelBuilder.Entity("Share2Connect.Api.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("userId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("userId"), 1L, 1);
 
-                    b.Property<string>("About")
+                    b.Property<string>("userBio")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Department")
+                    b.Property<string>("userDepartment")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("userGender")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FullName")
+                    b.Property<byte[]>("userImage")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("userMail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Gender")
+                    b.Property<string>("userNameText")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("userPassword")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<string>("userPhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("userId");
 
                     b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Share2Connect.Api.Models.Announcement", b =>
                 {
-                    b.HasOne("Share2Connect.Api.Models.AnnouncementData", "Data")
+                    b.HasOne("Share2Connect.Api.Models.AnnouncementData", "data")
                         .WithMany()
-                        .HasForeignKey("DataId")
+                        .HasForeignKey("dataId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Data");
-                });
-
-            modelBuilder.Entity("Share2Connect.Api.Models.AnnouncementData", b =>
-                {
-                    b.HasOne("Share2Connect.Api.Models.ImageFile", "Image")
-                        .WithMany()
-                        .HasForeignKey("ImageID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Image");
+                    b.Navigation("data");
                 });
 
             modelBuilder.Entity("Share2Connect.Api.Models.Participant", b =>

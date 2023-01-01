@@ -7,12 +7,12 @@ namespace Share2Connect.Api.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Post_id { get; set; }
+        public int post_id { get; set; }
         [Required]
-        public string Category { get; set; }
+        public string category { get; set; }
         [Required]
-        public int User_id { get; set; }
+        public int user_id { get; set; }
         [Required]
-        public AnnouncementData Data { get; set; }
+        public AnnouncementData data { get; set; }
     }
 }

@@ -34,12 +34,14 @@ namespace Share2Connect.Api.Controllers
 
                 var newUser = new User
                 {
-                    FullName = user.FullName,
-                    Email = user.Email,
-                    Password = Encrypt.GenerateMD5HashedPassword(user.Password),
-                    Gender = user.Gender,
-                    About = user.About,
-                    Department = user.Department
+                    userNameText = user.userNameText,
+                    userMail = user.userMail,
+                    userPassword = Encrypt.GenerateMD5HashedPassword(user.userPassword),
+                    userGender = user.userGender,
+                    userBio = user.userBio,
+                    userPhoneNumber = user.userPhoneNumber,
+                    userImage = user.userImage,
+                    userDepartment = user.userDepartment
                 };
 
                 // create user 
@@ -76,7 +78,8 @@ namespace Share2Connect.Api.Controllers
         {
             // check if user exist
             var currentUser = _context.Users.
-               FirstOrDefault(o => o.Email.ToLower() == user.Email.ToLower());
+               FirstOrDefault(o => o.userMail.ToLower() == user.userMail.ToLower() ||
+               o.userNameText.ToLower() == user.userNameText.ToLower());
 
             if (currentUser != null) return true;
 

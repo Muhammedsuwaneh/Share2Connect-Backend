@@ -11,7 +11,7 @@ namespace Share2Connect.Api.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController] 
     public class UsersController : ControllerBase
     {
         private ApplicationDbContext _context; 
@@ -21,7 +21,7 @@ namespace Share2Connect.Api.Controllers
             _context = context;
         }
 
-        [HttpGet("get-current-user")]
+        [HttpGet("get-user-detail")]
         public IActionResult GetCurrentUser()
         {
             var identity = HttpContext.User.Identity as ClaimsIdentity;
@@ -30,16 +30,15 @@ namespace Share2Connect.Api.Controllers
             {
                 var userClaims = identity.Claims;
 
+                var userId = (userClaims.FirstOrDefault(o => o.Type == ClaimTypes.PrimarySid)?.Value).ToInt32();
+
+                var user = _context.Users.FirstOrDefault(o => o.userId == userId);
+
                 var response = new
                 {   
                     status = 200,
                     message = "success",
-                    User = new {
-                        Id = (userClaims.FirstOrDefault(o => o.Type == ClaimTypes.PrimarySid)?.Value).ToInt32(),
-                        FullName = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.NameIdentifier)?.Value,
-                        Email = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
-                        Gender = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Gender)?.Value,
-                    }
+                    User = user,
                 };
 
                 return Ok(response);
@@ -55,7 +54,7 @@ namespace Share2Connect.Api.Controllers
         [HttpGet("get-user/{id}")]
         public IActionResult GetUser(int id)
         {
-            var user = _context.Users.FirstOrDefault(o => o.Id == id);
+            var user = _context.Users.FirstOrDefault(o => o.userId == id);
 
             var response = new
             {
