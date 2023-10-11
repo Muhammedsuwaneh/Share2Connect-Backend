@@ -42,9 +42,9 @@ This will create all necessary database tables using the initial migrations in t
 
 ## Technologies
 <div id="badges">
-  <img src="https://img.shields.io/badge/-C Sharp-green" />
-  <img src="https://img.shields.io/badge/-.Net Core 6" />
-  <img src="https://img.shields.io/badge/-Entity Framework" />
-  <img src="https://img.shields.io/badge/-JWT" />
-  <img src="https://img.shields.io/badge/-MS SQL Server" />
+  <img src="https://img.shields.io/badge/-C Sharp-red" />
+  <img src="https://img.shields.io/badge/-.Net Core 6 Web Api-white" />
+  <img src="https://img.shields.io/badge/-Entity Framework Core-blue" />
+  <img src="https://img.shields.io/badge/-JWT-white" />
+  <img src="https://img.shields.io/badge/-MS SQL Server-green" />
 </div>
